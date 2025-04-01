@@ -109,14 +109,41 @@ function showSequentialMessages() {
 function replaceGenioWithFrancineYDescartes() {
     playSound('happy_end');
     const revealScene = document.getElementById("reveal-scene");
-    revealScene.innerHTML = `
-        <div style="position: relative; width: 100%; height: 100%;">
-            <img src="png/FinalAbrazo.png" style="width: 100%; height: auto; display: block;" />
-            <div id="heart-emojis" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); font-size: 40px; animation: bubbleUp 3s ease-in-out infinite;">
-                ❤️ ❤️ ❤️
-            </div>
-        </div>
-    `;
+
+    const video = document.createElement("video");
+    video.src = "video/FinalAbrazo.mp4";
+    video.style.width = "100%";
+    video.style.display = "block";
+    video.muted = true;
+    video.playsInline = true;
+    video.autoplay = true;
+    video.setAttribute("preload", "auto");
+
+    let playCount = 0;
+    video.addEventListener("ended", () => {
+        playCount++;
+        if (playCount < 2) {
+            video.currentTime = 0;
+            video.play();
+        } else {
+            video.pause(); // se queda en el último frame
+        }
+    });
+
+    const heartOverlay = document.createElement("div");
+    heartOverlay.id = "heart-emojis";
+    heartOverlay.style.position = "absolute";
+    heartOverlay.style.bottom = "0";
+    heartOverlay.style.left = "50%";
+    heartOverlay.style.transform = "translateX(-50%)";
+    heartOverlay.style.fontSize = "40px";
+    heartOverlay.style.animation = "bubbleUp 3s ease-in-out infinite";
+    heartOverlay.textContent = "❤️ ❤️ ❤️";
+
+    revealScene.innerHTML = "";
+    revealScene.style.position = "relative";
+    revealScene.appendChild(video);
+    revealScene.appendChild(heartOverlay);
 }
 
 function showCredits() {
