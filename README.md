@@ -27,10 +27,6 @@ Este es un Escape Room educativo e interactivo basado en la figura de René Desc
 - Para modificar o adaptar el contenido:
   - Edita los archivos HTML y JS para cambiar textos, imágenes o pruebas.
   - La estructura de carpetas debe mantenerse para que los enlaces funcionen correctamente.
-- Si deseas desplegarlo online:
-  1. Ve a la configuración del repositorio en GitHub.
-  2. En la sección **Pages**, elige la rama `main` y la carpeta raíz o la carpeta donde esté el ejecutable html.
-  3. GitHub generará una URL pública donde podrá ejecutarse el juego desde cualquier navegador.
 
 ## Créditos
 
